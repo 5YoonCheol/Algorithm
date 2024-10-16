@@ -1,4 +1,4 @@
-package org.kr.co.algorithms;
+package org.kr.co.algorithms.twoPointers;
 
 public class AlgorithmCode {
     /**
