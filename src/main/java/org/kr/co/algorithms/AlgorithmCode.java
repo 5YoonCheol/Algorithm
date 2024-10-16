@@ -4,7 +4,6 @@ public class AlgorithmCode {
     /**
      * @author : 5YoonCheol
      * @created : 2024-10-15 오후 9:24
-     * @updated : 2024-10-15 오후 9:24
      * @description : 연속 부분수열
      */
     public int numberOfCase(int n, int m, int[] arr){
@@ -20,10 +19,36 @@ public class AlgorithmCode {
         return answer;
     }
 
+    /**
+     * @author : 5YoonCheol
+     * @created : 2024-10-16 오후 8:53
+     * @description : 연속된 자연수의 합
+     */
+    public int sumOfConsecutive(int n){
+        int answer = 0;
+        int sum = 0;
+        int lt = 0;
+
+        //1부터 시작하는 연속되는 자연수의 합
+        for(int rt=1; rt<n; rt++){
+            sum += rt;
+            if(sum == n){answer++;}
+            //n 이상이 될 경우 맨 앞 자연수를 하나씩 밀면서 빼준다.
+            while(sum >= n){
+                sum -= ++lt;
+                if(sum == n){answer++;}
+            }
+        }
+
+        return answer;
+    }
+
+
     public static void main(String[] args) {
         AlgorithmCode algorithmCode = new AlgorithmCode();
 
         //실행할 함수 호출
         algorithmCode.numberOfCase(4, 3, new int[]{1,2,3});
+        algorithmCode.sumOfConsecutive(15);
     }
 }
