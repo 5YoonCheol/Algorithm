@@ -29,8 +29,12 @@ public class AlgorithmCode {
         int sum = 0;
         int lt = 0;
 
-        //1부터 시작하는 연속되는 자연수의 합
-        for(int rt=1; rt<n; rt++){
+        /*
+        1부터 시작하는 연속되는 자연수의 합
+        n을 2로 나눈 몫+1 까지만 반복해주면 됨
+        (ex. n=15 일 때, 8부터 연속된 자연수들의 합은 무조건 15를 초과하기 때문)
+        */
+        for(int rt=1; rt<=n/2+1; rt++){
             sum += rt;
             if(sum == n){answer++;}
             //n 이상이 될 경우 맨 앞 자연수를 하나씩 밀면서 빼준다.
