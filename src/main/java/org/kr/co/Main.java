@@ -3,24 +3,19 @@ package org.kr.co;
 import java.util.*;
 
 public class Main {
-    public static int solution(int n, int m, int[] arr){
-        int answer = 0;
-        int sum = 0;
+    public static String solution(int n, String chars){
+        String answer = null;
+        HashMap<Character, Integer> map = new HashMap<>();
 
-        int start = 0;
+        for(Character c : chars.toCharArray()){
+            map.put(c, map.getOrDefault(c, 0) + 1);
+        }
 
-        for(int i = 0; i < n; i++){
-            sum += arr[i];
-            if(sum == m){
-                answer++;
-                sum = 0;
-                start++;
-                i = start-1;
-            }
-            else if(sum > m){
-                sum = 0;
-                start++;
-                i = start-1;
+        int max = 0;
+        for(Character c : map.keySet()){
+            if(map.get(c) > max){
+                max = map.get(c);
+                answer = String.valueOf(c);
             }
         }
 
@@ -31,16 +26,9 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int n = sc.nextInt();
-
-        int m = sc.nextInt();
-
-        int[] arr = new int[n];
-        for(int i = 0; i < n; i++){
-            arr[i] = sc.nextInt();
-        }
+        String chars = sc.next();
 
 
-
-        System.out.print(solution(n, m, arr));
+        System.out.print(solution(n, chars));
     }
 }

@@ -117,13 +117,4 @@ public class TwoPointers {
         }
         return answer;
     }
-
-    public static void main(String[] args) {
-        TwoPointers twoPointers = new TwoPointers();
-
-        //실행할 함수 호출
-        twoPointers.numberOfCase(4, 3, new int[]{1,2,3,4});
-        twoPointers.sumOfConsecutive(15);
-        twoPointers.maxLengthSequence(14, 2, new int[]{1,1,0,0,1,1,0,1,1,0,1,1,0,1});
-    }
 }
