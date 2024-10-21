@@ -3,20 +3,23 @@ package org.kr.co;
 import java.util.*;
 
 public class Main {
-    public static String solution(int n, String chars){
+    public static String solution(String a, String b){
         String answer = null;
-        HashMap<Character, Integer> map = new HashMap<>();
+        HashMap<Character, Integer> aMap = new HashMap<>();
+        HashMap<Character, Integer> bMap = new HashMap<>();
 
-        for(Character c : chars.toCharArray()){
-            map.put(c, map.getOrDefault(c, 0) + 1);
+        for(Character c : a.toCharArray()){
+            aMap.put(c, aMap.getOrDefault(c, 0) + 1);
         }
 
-        int max = 0;
-        for(Character c : map.keySet()){
-            if(map.get(c) > max){
-                max = map.get(c);
-                answer = String.valueOf(c);
-            }
+        for(Character c : b.toCharArray()){
+            bMap.put(c, bMap.getOrDefault(c, 0) + 1);
+        }
+
+        if(aMap.equals(bMap)){
+            answer = "YES";
+        }else{
+            answer = "NO";
         }
 
         return answer;
@@ -25,10 +28,10 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int n = sc.nextInt();
-        String chars = sc.next();
+        String a = sc.next();
+        String b = sc.next();
 
 
-        System.out.print(solution(n, chars));
+        System.out.print(solution(a,b));
     }
 }
