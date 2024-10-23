@@ -3,23 +3,24 @@ package org.kr.co;
 import java.util.*;
 
 public class Main {
-    public static String solution(String a, String b){
-        String answer = null;
-        HashMap<Character, Integer> aMap = new HashMap<>();
-        HashMap<Character, Integer> bMap = new HashMap<>();
+    public static ArrayList<Integer> solution(int a, int b, int[] arr){
+        ArrayList<Integer> answer = new ArrayList<>();
+        int lt = 0;
 
-        for(Character c : a.toCharArray()){
-            aMap.put(c, aMap.getOrDefault(c, 0) + 1);
+        HashMap<Integer,Integer> map = new HashMap<>();
+
+        for(int i=0; i<b-1; i++){
+            map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
         }
 
-        for(Character c : b.toCharArray()){
-            bMap.put(c, bMap.getOrDefault(c, 0) + 1);
-        }
-
-        if(aMap.equals(bMap)){
-            answer = "YES";
-        }else{
-            answer = "NO";
+        for(int rt = b-1; rt < a; rt++){
+            map.put(arr[rt], map.getOrDefault(arr[rt], 0) + 1);
+            answer.add(map.size());
+            map.put(arr[lt], map.get(arr[lt]) - 1);
+            if(map.get(arr[lt]) == 0){
+                map.remove(arr[lt]);
+            }
+            lt++;
         }
 
         return answer;
@@ -28,10 +29,16 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        String a = sc.next();
-        String b = sc.next();
+        int a = sc.nextInt();
+        int b = sc.nextInt();
 
+        int[] arr = new int[a];
+        for(int i = 0; i < a; i++){
+            arr[i] = sc.nextInt();
+        }
 
-        System.out.print(solution(a,b));
+        for(int x: solution(a,b,arr)){
+            System.out.print(x + " ");
+        }
     }
 }
