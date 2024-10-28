@@ -3,7 +3,7 @@ package org.kr.co.algorithms.hash;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Hash {
+public class UseHash {
     /**
      * @author : 5YoonCheol
      * @created : 2024-10-17 오후 10:08

@@ -1,6 +1,6 @@
 package org.kr.co.algorithms.twoPointers;
 
-public class TwoPointers {
+public class UseTwoPointers {
     /**
      * @author : 5YoonCheol
      * @created : 2024-10-15 오후 9:24

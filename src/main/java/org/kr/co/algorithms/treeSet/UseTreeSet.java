@@ -2,7 +2,7 @@ package org.kr.co.algorithms.treeSet;
 
 import java.util.Collections;
 
-public class TreeSet {
+public class UseTreeSet {
     /**
      * @author : 5YoonCheol
      * @created : 2024-10-25 오후 10:19
