@@ -80,5 +80,38 @@ public class UseStack {
         }
         return answer;
     }
-    
+
+    /**
+     * @author : 5YoonCheol
+     * @created : 2024-10-29 오후 9:58
+     * @description : 크레인 작동 시 인형이 집어지지 않는 경우는 없으나 만약 인형이 없는 곳에서 크레인을 작동시키는 경우에는 아무런 일도 일어나지 않습니다.
+     * 또한 바구니는 모든 인형이 들어갈 수 있을 만큼 충분히 크다고 가정합니다. (그림에서는 화면표시 제약으로 5칸만으로 표현하였음)
+     * 게임 화면의 격자의 상태가 담긴 2차원 배열 board와 인형을 집기 위해 크레인을 작동시킨 위치가 담긴 배열 moves가 매개변수로 주어질 때,
+     * 크레인을 모두 작동시킨 후 터트려져 사라진 인형의 개수를 구하는 프로그램을 작성하세요.
+     * 0은 빈 칸을 나타냅니다.
+     */
+    public int peekDolls(int a, int b, int[][] arr, int[] moves){
+        int answer = 0;
+        Stack<Integer> stack = new Stack<>();
+
+        for(int pos : moves){
+            for (int i = 0; i < a; i++){
+                if(arr[i][pos-1] != 0){
+                    int tmp = arr[i][pos-1];
+                    arr[i][pos-1] = 0;
+                    if(!stack.isEmpty() && stack.peek() == tmp){
+                        stack.pop();
+                        answer += 2;
+                    }
+                    else{
+                        stack.push(tmp);
+                    }
+                    break;
+                }
+            }
+        }
+
+        return answer;
+    }
+
 }
