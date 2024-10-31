@@ -114,4 +114,37 @@ public class UseStack {
         return answer;
     }
 
+    /**
+     * @author : 5YoonCheol
+     * @created : 2024-10-31 오후 9:30
+     * @description : 후위연산식이 주어지면 연산한 결과를 출력하는 프로그램을 작성하세요.
+     * 만약 3*(5+2)-9 을 후위연산식으로 표현하면 352+*9- 로 표현되며 그 결과는 12입니다.
+     */
+    public int getResult(String a){
+        int answer = 0;
+        Stack<Integer> stack = new Stack<>();
+
+        for(char c : a.toCharArray()){
+            if(Character.isDigit(c)){
+                stack.push(Character.getNumericValue(c));
+            }else{
+                int rt = Integer.parseInt(stack.pop().toString());
+                int lt = Integer.parseInt(stack.pop().toString());
+
+                if(c == '+'){
+                    stack.push(lt + rt);
+                }else if(c == '-'){
+                    stack.push(lt - rt);
+                }else if(c == '*'){
+                    stack.push(lt * rt);
+                }else if(c == '/'){
+                    stack.push(lt / rt);
+                }
+            }
+        }
+        answer = stack.pop();
+
+        return answer;
+    }
+
 }
