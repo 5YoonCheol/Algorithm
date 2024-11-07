@@ -10,7 +10,7 @@ public class Sort {
     public static String selectionSort(int a, int[] arr){
         String answer = "";
 
-        for(int i=0; i<arr.length; i++){
+        for(int i=0; i<arr.length-1; i++){
             int idx = i;
             for(int j=i+1; j<arr.length; j++){
                 if(arr[j] < arr[idx]){
