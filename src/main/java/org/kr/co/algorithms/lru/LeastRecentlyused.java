@@ -32,4 +32,37 @@ public class LeastRecentlyused {
 
         return answer.trim();
     }
+
+    /**
+     * @author : 5YoonCheol
+     * @created : 2024-11-10 오후 7:54
+     * @description : cache구현 다른 풀이
+     */
+
+    public String otherCache(int a, int[] arr){
+        String answer = "";
+        int[] cache = new int[a];
+        for(int x: arr){
+            int pos = -1;
+            for(int i=0; i<a; i++){
+                if(cache[i] == x){
+                    pos = i;
+                }
+            }
+            if(pos == -1){
+                for(int i=a-1; i >= 1; i--){
+                    cache[i] = cache[i-1];
+                }
+            }else{
+                for(int i=pos; i>=1; i--){
+                    cache[i] = cache[i-1];
+                }
+            }
+            cache[0] = x;
+        }
+        for(int x: cache){
+            answer += x + " ";
+        }
+        return answer.trim();
+    }
 }
