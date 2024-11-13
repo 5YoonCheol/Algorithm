@@ -1,6 +1,9 @@
 package org.kr.co.algorithms.sort;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Scanner;
 
 public class Sort {
     /**
@@ -137,5 +140,30 @@ public class Sort {
 
         return answer.trim();
     }
+
+    /**
+     * @author : 5YoonCheol
+     * @created : 2024-11-13 오후 8:25
+     * @description : N개의 평면상의 좌표(x, y)가 주어지면 모든 좌표를 오름차순으로 정렬하는 프로그램을 작성하세요.
+     * 정렬기준은 먼저 x값의 의해서 정렬하고, x값이 같을 경우 y값에 의해 정렬합니다.
+     */
+    public void sortPoint(){
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+        ArrayList<Point> dataList = new ArrayList<>();
+        for(int i = 0; i < a; i++){
+            int x = sc.nextInt();
+            int y = sc.nextInt();
+            Point data = new Point(x, y);
+            dataList.add(data);
+        }
+
+        Collections.sort(dataList);
+        for(Point point : dataList){
+            System.out.println(point.x + " " + point.y);
+        }
+    }
+    
     
 }
