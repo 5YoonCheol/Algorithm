@@ -48,4 +48,47 @@ public class ParametricSearch {
         return answer;
     }
     
+    /**
+     * @author : 5YoonCheol
+     * @created : 2024-11-15 오후 6:45
+     * @description : N개의 마구간이 수직선상에 있습니다. 각 마구간은 x1, x2, x3, ......, xN의 좌표를 가지며, 마구간간에 좌표가 중복되는 일은 없습니다.
+     * 현수는 C마리의 말을 가지고 있는데, 이 말들은 서로 가까이 있는 것을 좋아하지 않습니다. 각 마구간에는 한 마리의 말만 넣을 수 있고,
+     * 가장 가까운 두 말의 거리가 최대가 되게 말을 마구간에 배치하고 싶습니다.
+     * C마리의 말을 N개의 마구간에 배치했을 때 가장 가까운 두 말의 거리가 최대가 되는 그 최대값을 출력하는 프로그램을 작성하세요.
+     */
+    public int horseCount(int[] arr, int distance){
+        int cnt = 1;
+        int sum = arr[0];
+
+        for(int i = 1; i < arr.length; i++){
+            if(arr[i] - sum >= distance){
+                cnt++;
+                sum = arr[i];
+            }
+        }
+
+        return cnt;
+    }
+
+    public int getMaxLength(int a, int b, int[] arr){
+        int answer = 0;
+        Arrays.sort(arr);
+
+        int lt = 1;
+        int rt = arr[a-1];
+
+        while(lt <= rt){
+            int mid = (lt + rt) / 2;
+            if(horseCount(arr, mid) >=  b){
+                answer = mid;
+                lt = mid + 1;
+            }else {
+                rt = mid - 1;
+            }
+        }
+
+        return answer;
+    }
+    
+    
 }
