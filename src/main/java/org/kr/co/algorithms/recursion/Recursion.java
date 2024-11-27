@@ -26,5 +26,14 @@ public class Recursion {
             System.out.print(n%2 + "");
         }
     }
-    
+
+    /**
+     * @author : 5YoonCheol
+     * @created : 2024-11-27 오후 7:15
+     * @description : 자연수 N이 입력되면 N팩토리얼의 결과 값을 출력하는 프로그램을 작성하세요.
+     */
+    public int Factorial(int n) {
+        if(n==1) return 1;
+        else return n*Factorial(n-1);
+    }
 }
